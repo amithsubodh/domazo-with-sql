@@ -100,7 +100,6 @@ function ResDetail() {
                       <span>₹{menuItem.price}</span>
                     </div>
                     <p>{menuItem.description}</p>
-                    <span className="read">read more</span>
                   </div>
                 </div>
               ))}

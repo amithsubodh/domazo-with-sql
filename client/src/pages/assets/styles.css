@@ -23,7 +23,9 @@ a {
 }
 .no-use {
   height: 100vh;
-  background: linear-gradient(45deg, #eace33, #e56e32);
+  background: linear-gradient(105deg, #6890c2,#a5c0e1);
+  /* background: url('https://aicdn.picsart.com/d35f86c0-c21b-430d-ab26-916d29e0ef46.png') no-repeat center center ; */
+  /* background-size: cover;  */
 }
 
 header {
@@ -98,7 +100,7 @@ header h1 a {
   margin-left: 10%;
   height: 400px;
   width: 400px;
-  animation: spin 40s linear infinite;
+  animation: jumpInOut 5s ease-in-out infinite;
 }
 .cover-text {
   width: 400px;
@@ -130,12 +132,12 @@ header h1 a {
   }
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
+@keyframes jumpInOut {
+  0%, 100% {
+    transform: scale(1);
   }
-  100% {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(1.2);
   }
 }
 
@@ -156,12 +158,12 @@ footer {
   display: flex;
   width: 100%;
   height: 150px;
-  background-color: #efd333;
+  background-color: rgb(0, 0, 0);
   justify-content: space-between;
   align-items: center;
   padding: 20px 5%;
   box-sizing: border-box;
-  color: #ff5a08;
+  color: white;
   box-shadow: 0px 0px 10px grey;
 }
 .footer-logo {
@@ -214,6 +216,8 @@ pre {
 
 .res-cards {
   background-color: #f8f8f8;
+  /* background: url('https://aicdn.picsart.com/d35f86c0-c21b-430d-ab26-916d29e0ef46.png') no-repeat center center ; */
+  /* background-size: cover; */
   height: auto;
   width: 90%;
   margin: auto;
@@ -356,6 +360,8 @@ pre {
 
 /* brands */
 .food-brands {
+  /* background: url('https://aicdn.picsart.com/d35f86c0-c21b-430d-ab26-916d29e0ef46.png') no-repeat center center ; */
+  /* background-size: cover;  */
   height: auto;
   width: 100%;
   display: flex;
@@ -368,6 +374,8 @@ pre {
   border-radius: 100%;
 }
 .brand {
+  /* background: url('https://aicdn.picsart.com/d35f86c0-c21b-430d-ab26-916d29e0ef46.png') no-repeat center center ; */
+  /* background-size: cover;  */
   text-align: center;
   font-family: Okra, Helvetica, sans-serif;
   font-weight: 500;

@@ -6,8 +6,8 @@ function About() {
       <section className="sec">
         <h2 className="heading">Our Story</h2>
         <p className="paragraph">
-          Welcome to domazo Food App, where we bring delicious flavors to your
-          doorstep! Founded in [2023], domazo is dedicated to providing
+          Welcome to CraveHaven Food App, where we bring delicious flavors to your
+          doorstep! Founded in [2024], CraveHaven is dedicated to providing
           high-quality, mouthwatering meals made with the freshest ingredients.
           Our team of talented chefs and food enthusiasts work tirelessly to
           create a diverse menu that caters to all tastes and preferences We
@@ -23,16 +23,16 @@ function About() {
         <h2 className="heading">Meet our Team</h2>
         <div className="team">
           <div className="team-member">
-            <p>Pratheek</p>
+            <p>Amith</p>
           </div>
           <div className="team-member">
-            <p>Nisarga</p>
+            <p>Parinith</p>
           </div>
           <div className="team-member">
-            <p>Druthi</p>
+            <p>dfgdgfdgf</p>
           </div>
           <div className="team-member">
-            <p>Harshini</p>
+            <p>ghfgchg</p>
           </div>
         </div>
       </section>

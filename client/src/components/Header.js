@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header id="home">
       <h1>
-        <Link to="/">Domazo</Link>
+        <Link to="/">CraveHaven</Link>
       </h1>
       <nav className="nav ">
         <ul className={`${isMenuOpen ? "visible" : ""}`}>

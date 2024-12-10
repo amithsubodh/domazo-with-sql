@@ -27,7 +27,7 @@ const FoodTypes = () => {
   return (
     <div>
       <div className="food-types-heading">
-        <h3>Inspiration for your first order</h3>
+        <h3>Not sure what to try first? Let us help you decide!</h3>
       </div>
       <div className="food-types">
         {typesData.map((type, index) => (

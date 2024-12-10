@@ -64,13 +64,15 @@ a {
 }
 
 .form-container {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust the opacity for the glass effect */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 38px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   width: 40vw;
   height: 60vh;
+  backdrop-filter: blur(10px); /* Adds a glass blur effect */
 }
+
 
 .form {
   display: flex;

@@ -12,7 +12,7 @@ function Home() {
         <Header />
         <div className="butter">
           <div className="cover-text">
-            <h1>Hungry? Just order some food!</h1>
+            <h1>Craving? Just grab some bites!</h1>
           </div>
           <img src={img} alt="" />
         </div>

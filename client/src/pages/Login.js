@@ -40,7 +40,7 @@ function Login() {
                     fontWeight: "900",
                   }}
                 >
-                  Domazo
+                  CraveHaven
                 </span>
               </h1>
               <h3>Log in</h3>

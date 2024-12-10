@@ -3,8 +3,8 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer>
-      <h1 className="footer-logo"><a href="#home">Domazo</a></h1>
-      <pre>© All rights reserved, Domazo</pre>
+      <h1 className="footer-logo"><a href="#home">CraveHaven</a></h1>
+      <pre>© All rights reserved, CraveHaven</pre>
 
       <ul className="social-media">
         <li>

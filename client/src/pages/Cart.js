@@ -5,20 +5,24 @@ import axios from "axios";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
+  const [tip, setTip] = useState(0); // State to store tip amount
+
+  const calculateSubtotal = () => {
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  };
 
   const updateQuantityAndSave = (itemId, newQuantity) => {
-    // Update the quantity locally
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === itemId ? { ...item, quantity: newQuantity } : item
       )
     );
 
-    // Send a request to update the quantity in the database
     axios
-      .put(`http://localhost:3001/carts/${itemId}`, {
-        quantity: newQuantity,
-      })
+      .put(`http://localhost:3001/carts/${itemId}`, { quantity: newQuantity })
       .then((response) => {
         console.log("Quantity updated successfully:", response.data);
       })
@@ -41,24 +45,22 @@ function Cart() {
     updateQuantityAndSave(itemId, updatedQuantity);
   };
 
-  // useEffect(() => {
-  //   // Fetch cart items from the database
-  //   axios
-  //     .get("http://localhost:3001/carts")
-  //     .then((response) => {
-  //       setCartItems(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching cart items:", error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/carts")
+      .then((response) => {
+        setCartItems(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching cart items:", error);
+      });
+  }, []);
+
   const removeItemFromCart = (itemId) => {
-    // Send a DELETE request to remove the item from the database
     axios
       .delete(`http://localhost:3001/carts/${itemId}`)
       .then((response) => {
         console.log("Item removed successfully:", response.data);
-        // Update local state to reflect the removal of the item
         setCartItems((prevItems) =>
           prevItems.filter((item) => item.id !== itemId)
         );
@@ -67,6 +69,22 @@ function Cart() {
         console.error("Error removing item:", error);
       });
   };
+
+  const handleTipChange = (e) => {
+    const value = parseFloat(e.target.value) || 0;
+    setTip(value);
+  };
+
+  const subtotal = calculateSubtotal();
+  const deliveryFee = 20;
+  const platformFee = 10;
+  const gstAndCharges = 20;
+
+  // Dynamically calculate finalTotal
+  const finalTotal =
+    cartItems.length > 0
+      ? subtotal + deliveryFee + platformFee + gstAndCharges + tip
+      : 0;
 
   return (
     <div style={{ backgroundColor: "#eaeded" }}>
@@ -86,6 +104,7 @@ function Cart() {
               <div className="ordered-details">
                 <div className="ordered-food-name">
                   <h3>{item.food_name}</h3>
+                  <h3>₹{item.price}</h3>
                 </div>
                 <div className="ordered-food-des">
                   <p>{item.cuisine_type}</p>
@@ -126,13 +145,13 @@ function Cart() {
           ))}
           <hr />
           <div className="sub-total">
-            <p>Subtotal: ₹850</p>
+            <p>Subtotal: ₹{subtotal}</p>
           </div>
         </div>
         <div className="total-to-pay">
           <div className="sub-total-to-pay">
             <p>Sub Total ({cartItems.length} item):</p>
-            <span>₹850</span>
+            <span>₹{subtotal}</span>
           </div>
           <hr />
           <div className="bill-detail">
@@ -141,38 +160,46 @@ function Cart() {
             </div>
             <div className="item-total">
               <span>Item Total</span>
-              <span>₹850</span>
+              <span>₹{subtotal}</span>
             </div>
-            <div className="del-total">
-              <span>Delivery partner fee</span>
-              <span>₹20</span>
-            </div>
+            {cartItems.length > 0 && (
+              <>
+                <div className="del-total">
+                  <span>Delivery partner fee</span>
+                  <span>₹{deliveryFee}</span>
+                </div>
+                <div className="fee-total">
+                  <span>Platform fee</span>
+                  <span>₹{platformFee}</span>
+                </div>
+                <div className="gst-total">
+                  <span>
+                    GST and Restaurant <br />
+                    Charges
+                  </span>
+                  <span>₹{gstAndCharges}</span>
+                </div>
+              </>
+            )}
             <hr />
             <form>
               <div className="del-tip">
                 <span>Delivery Tip</span>
                 <span>
-                  <input type="text" placeholder="₹  5" />
+                  <input
+                    type="number"
+                    value={tip}
+                    onChange={handleTipChange}
+                    placeholder="₹  5"
+                  />
                 </span>
               </div>
-              <div className="fee-total">
-                <span>Platform fee</span>
-                <span>₹10</span>
-              </div>
-              <div className="gst-total">
-                <span>
-                  GST and Restaurant <br />
-                  Charges
-                </span>
-                <span>₹20</span>
-              </div>
-              <hr />
               <div className="final-total">
                 <div className="final-total">
                   <p>To Pay</p>
                 </div>
                 <div className="final-amt">
-                  <span>₹900</span>
+                  <span>₹{finalTotal}</span>
                 </div>
               </div>
               <div className="proceed-to-pay">

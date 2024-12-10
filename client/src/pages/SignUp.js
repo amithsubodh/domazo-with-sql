@@ -41,7 +41,7 @@ function SignUp() {
                       fontWeight: 900,
                     }}
                   >
-                    Domazo
+                    CraveHaven
                   </span>
                 </h1>
                 <h3>Sign Up</h3>
